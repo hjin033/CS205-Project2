@@ -64,8 +64,6 @@ def forward(fileName):
         if currBest > bestAcc:
             bestAcc = currBest
             bestFeatures = copy.deepcopy(features)
-        else:
-            print("!!!Accuracy is decreasing!!!")
         print("")
             
     file.close()
@@ -109,8 +107,6 @@ def backward(fileName):
         if currBest > bestAcc:
             bestAcc = currBest
             bestFeatures = copy.deepcopy(features)
-        else:
-            print("!!!Accuracy is decreasing!!!")
         print("")        
             
     file.close()
@@ -133,6 +129,7 @@ def main():
         start = time.time()
         forward(fileName)
     else:
+        start = time.time()
         backward(fileName)
     print("Time: %.2f" % (time.time() - start))
     
