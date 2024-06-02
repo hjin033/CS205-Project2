@@ -1,5 +1,6 @@
 import math
 import copy
+import time
 
 def nearest(data, features):
     correct = 0
@@ -119,10 +120,15 @@ def main():
     print("2. Backward Elimination")
     method = input("")
     
+    print("")
+    print("Using leave one out cross validation.")
+    print("")
     if method == '1':
+        start = time.time()
         forward(fileName)
     else:
         backward(fileName)
+    print("Time: %.2f" % (time.time() - start))
     
 if __name__ == "__main__":
     main()
