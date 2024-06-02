@@ -40,6 +40,12 @@ def forward(fileName):
     print("The dataset has %d features and %d instances." % (featureNum - 1, len(data)))
     print("")
     
+    acc = nearest(data, features)
+    print("Feature(s) %s, the accuracy is %.2f%%" % (str(features), acc * 100))
+    print("")
+    print("Feature set %s is the best with an accuracy of %.2f%%" % (str(features), acc * 100))
+    print("")
+    
     #Nested for loop that expand(add feature) upon the (local)best feature set
     for i in range(1, featureNum):
         currBest = 0
@@ -60,7 +66,7 @@ def forward(fileName):
             bestFeatures = copy.deepcopy(features)
         else:
             print("!!!Accuracy is decreasing!!!")
-        print("")        
+        print("")
             
     file.close()
     print("Finished! The best feature set is %s with an accuracy of %.2f%%" % (str(bestFeatures), bestAcc * 100))
@@ -84,7 +90,7 @@ def backward(fileName):
     print("")
     
     #Nested for loop that expand(delete feature) upon the (local)best feature set
-    for i in range(1, featureNum - 1):
+    for i in range(1, featureNum):
         currBest = 0
         currFeat = 0
         for j in range(1, featureNum):
